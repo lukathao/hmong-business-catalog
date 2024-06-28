@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.3",
+    "@tanstack/react-query-devtools": "^5.48.0",
     "@vercel/functions": "^1.0.2",
+    "daisyui": "^4.12.10",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-query": "^3.39.3",
     "sqlstring": "^2.3.3",
     "zod": "^3.23.8"
   },

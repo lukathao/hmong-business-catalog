@@ -1,22 +1,14 @@
 import { Pool } from "@neondatabase/serverless";
 import { NextRequest } from "next/server";
-import { waitUntil } from "@vercel/functions";
-import sqlstring from "sqlstring";
 import { add_business_schema, getBody } from "@/utils/routeHelper";
+import { addNewBusinessToNeonDb, getAllBusinessesFromNeonDb } from "@/repository/neonDbRepo";
 
 export async function GET(req: NextRequest) {
-    const pool = new Pool({
-        connectionString: process.env.DATABASE_URL,
-    });
-    const sql = sqlstring.format(`
-      select * from businesses  
-    `, []);
-    const {rows} = await pool.query(sql);
-    const data = rows[0];
-    waitUntil(pool.end());
+    
+    const businesses = await getAllBusinessesFromNeonDb();
     return new Response(
         JSON.stringify(
-            {data}
+            {businesses}
         ), 
         {status: 200}
     );
@@ -29,13 +21,16 @@ export async function POST(req: NextRequest) {
     });
     const body = await getBody(req);
     const { business_owner, business_name, is_active, business_id } = add_business_schema.parse(body);
-    const sql = sqlstring.format(`
-      insert into businesses (id, business_name, business_owner, is_active, business_id, created_at)
-      values (GEN_RANDOM_UUID(), ?, ?, ?, ?, NOW());
-    `, [business_name, business_owner, is_active, business_id]);
-    await pool.query(sql);
-    console.log("sql: "+sql)
-    waitUntil(pool.end());
+    
+    try {
+        addNewBusinessToNeonDb(business_owner, business_name, is_active, business_id);
+    } catch(e) {
+        console.error(e);
+        return new Response(
+            JSON.stringify({Error: "Unable to add new business"}),
+            {status: 404}
+        ); 
+    } 
     return new Response(
         JSON.stringify({business: business_name}),
         {status: 200}

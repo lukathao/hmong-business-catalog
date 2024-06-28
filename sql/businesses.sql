@@ -6,4 +6,4 @@ create table businesses (
   business_id varchar(100),
   created_at timestamp,
   updated_at timestamp
-)
+);
