@@ -9,7 +9,7 @@ function handleSubmit(event: FormEvent<HTMLFormElement>) {
 const addBusiness = () => {
   return (
     <div>
-        <form onSubmit={handleSubmit}>
+        {/* <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="business_name">Business Name</label>
                 <input 
@@ -39,7 +39,7 @@ const addBusiness = () => {
             <div>
                 <button type="submit">Add</button>
             </div>
-        </form>
+        </form> */}
     </div>
   )
 }
