@@ -3,11 +3,10 @@ import { NextRequest } from "next/server";
 import { waitUntil } from "@vercel/functions";
 import sqlstring from "sqlstring";
 import { add_business_address_schema, getBody } from "@/utils/routeHelper";
+import { getNeonDBPool } from "@/utils/dbHelper";
 
 export async function GET(req: NextRequest) {
-    const pool = new Pool({
-        connectionString: process.env.DATABASE_URL,
-    });
+    const pool = await getNeonDBPool();
     const sql = sqlstring.format(`
       select * from business_address 
     `, []);
@@ -24,9 +23,7 @@ export async function GET(req: NextRequest) {
 
 
 export async function POST(req: NextRequest) {
-    const pool = new Pool({
-        connectionString: process.env.DATABASE_URL,
-    });
+    const pool = await getNeonDBPool();
     const body = await getBody(req);
     const { business_id, address, address_city, address_state, address_code, coordinates, country} = add_business_address_schema.parse(body);
     const sql = sqlstring.format(`

@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 import { add_business_schema, getBody } from "@/utils/routeHelper";
 import { addNewBusinessToNeonDb, getAllBusinessesFromNeonDb } from "@/repository/neonDbRepo";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
     
     const businesses = await getAllBusinessesFromNeonDb();
     return new Response(
@@ -16,9 +16,6 @@ export async function GET(req: NextRequest) {
 
 
 export async function POST(req: NextRequest) {
-    const pool = new Pool({
-        connectionString: process.env.DATABASE_URL,
-    });
     const body = await getBody(req);
     const { business_owner, business_name, is_active, business_id } = add_business_schema.parse(body);
     
