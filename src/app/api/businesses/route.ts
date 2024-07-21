@@ -1,7 +1,7 @@
 import { Pool } from "@neondatabase/serverless";
 import { NextRequest } from "next/server";
 import { add_business_schema, getBody } from "@/utils/routeHelper";
-import { addNewBusinessToNeonDb, getAllBusinessesFromNeonDb } from "@/repository/neonDbRepo";
+import { addNewBusinessToNeonDb, getAllBusinessesFromNeonDb } from "@/repository/NeonDbRepo";
 
 export async function GET() {
     

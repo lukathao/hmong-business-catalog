@@ -26,6 +26,9 @@ export default async function Home() {
         <p>
           <Link href="/shelters">Shelters</Link>
         </p>
+        <p>
+          <Link href="/gardens">Community Gardens</Link>
+        </p>
       </div>
 
       
