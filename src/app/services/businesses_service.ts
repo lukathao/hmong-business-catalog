@@ -2,11 +2,11 @@
 
 import { getAllBusinessesFromNeonDb, getBusinessAddressFromNeonDb, getSingleBusinessFromNeonDb } from "@/repository/NeonDbRepo";
 
-export async function getBusinessesAction() {
+export async function getBusinesses() {
     return await getAllBusinessesFromNeonDb();
 }
 
-export async function getSingleBusinessAction(id: string) {
+export async function getSingleBusiness(id: string) {
     return await getSingleBusinessFromNeonDb(id);
 }
 

@@ -1,12 +1,12 @@
 import React from 'react'
-import { getBusinessAddress, getSingleBusinessAction } from '../businesses_actions'
+import { getBusinessAddress, getSingleBusiness } from '../../services/businesses_service'
 import Link from 'next/link';
 
 
 
 const individualBusinessPage = async ({params,} : { params : {id: string}}) => {
   
-  const business = await getSingleBusinessAction(params.id);
+  const business = await getSingleBusiness(params.id);
   const businessAddress = await getBusinessAddress(params.id);
 
   return (

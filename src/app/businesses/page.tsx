@@ -1,16 +1,16 @@
 import Link from 'next/link'
-import { getBusinessesAction } from './businesses_actions';
+import { getBusinesses } from '../services/businesses_service';
 
 
 const businesses = async () => {
 
-  const businessesData = await getBusinessesAction();
+  const businesses = await getBusinesses();
   
   return (
     <>
       <div className="pt-5 pl-5 grid grid-flow-row grid-flow-col gap-4 place-items-start text-neutral-300 m-5">
         {
-          businessesData.map((business) =>(
+          businesses.map((business) =>(
             <>
               <Link href={`/businesses/${business.id}`} className="border-2 rounded-md p-2">
                 <p>{business.business_name}</p>
