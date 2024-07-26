@@ -19,11 +19,6 @@ const businesses = async () => {
           ))
         }
       </div>
-      {/* <div className="flex justify-center items-center h-screen">
-        <button className="btn btn-primary m-5">
-          <Link href="/businesses/add">Add</Link>
-        </button>
-      </div> */}
     </>
   )
 }

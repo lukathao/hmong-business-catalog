@@ -1,9 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
-import { getShelters } from '../../utils/services/shelter_service';
 
 const Shelters = async () => {
-  const shelters = await getShelters();
 
   return (
     <>

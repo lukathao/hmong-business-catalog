@@ -1,6 +1,7 @@
 "use server";
 
-import { addNewBusinessToNeonDb, getAllBusinessesFromNeonDb, getBusinessAddressFromNeonDb, getSingleBusinessFromNeonDb } from "@/repository/NeonDbRepo";
+import { getAllBusinessesFromNeonDb, getSingleBusinessFromNeonDb, getBusinessAddressFromNeonDb, addNewBusinessToNeonDb } from "@/repository/NeonDbRepo";
+
 
 export async function getBusinesses() {
     return await getAllBusinessesFromNeonDb();
