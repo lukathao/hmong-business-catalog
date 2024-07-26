@@ -1,10 +1,10 @@
 import { NextRequest } from "next/server";
 import { add_business_schema, getBody } from "@/utils/routeHelper";
-import { addNewBusinessToNeonDb, getAllBusinessesFromNeonDb } from "@/repository/NeonDbRepo";
+import { addNewBusiness, getBusinesses } from "@/utils/services/businesses_service";
 
 export async function GET() {
     
-    const businesses = await getAllBusinessesFromNeonDb();
+    const businesses = await getBusinesses();
     return new Response(
         JSON.stringify(
             {businesses}
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const { business_owner, business_name, is_active, business_id } = add_business_schema.parse(body);
     
     try {
-        addNewBusinessToNeonDb(business_owner, business_name, is_active, business_id);
+        await addNewBusiness(business_owner, business_name, is_active, business_id);
     } catch(e) {
         console.error(e);
         return new Response(
@@ -32,4 +32,3 @@ export async function POST(req: NextRequest) {
         {status: 200}
     );
 }
-

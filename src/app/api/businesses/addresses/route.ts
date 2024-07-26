@@ -1,4 +1,3 @@
-import { Pool } from "@neondatabase/serverless";
 import { NextRequest } from "next/server";
 import { waitUntil } from "@vercel/functions";
 import sqlstring from "sqlstring";
