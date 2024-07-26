@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 import { waitUntil } from "@vercel/functions";
 import sqlstring from "sqlstring";
 import { add_business_address_schema, getBody } from "@/utils/routeHelper";
-import { getNeonDBPool } from "@/utils/dbHelper";
+import { getNeonDBPool } from "@/utils/helpers/NeonDbHelper";
 
 export async function GET(req: NextRequest) {
     const pool = await getNeonDBPool();
