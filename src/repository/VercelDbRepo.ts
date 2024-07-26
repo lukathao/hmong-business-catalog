@@ -1,10 +1,10 @@
 
-import { getNeonDBPool } from '@/utils/dbHelper';
+import { getVercelDBPool } from '@/utils/helpers/VercelDbHelper';
 import { waitUntil } from '@vercel/functions';
 import sqlstring from "sqlstring";
 
 export const getAllSheltersFromVercelDb = async () => {
-    const pool = await getNeonDBPool();
+    const pool = await getVercelDBPool();
     const sql = sqlstring.format(`
       select business_owner, business_name, id from businesses  
     `, []);
@@ -13,7 +13,7 @@ export const getAllSheltersFromVercelDb = async () => {
 }
 
 export const getSingleShelterFromVercelDb = async (id: string) => {
-    const pool = await getNeonDBPool();
+    const pool = await getVercelDBPool();
     const sql = sqlstring.format(`
       select business_owner, business_name, id from businesses
       where id= ?
@@ -23,7 +23,7 @@ export const getSingleShelterFromVercelDb = async (id: string) => {
 }
 
 export const addShelterToVercelDb = async (id: string) => {
-  const pool = await getNeonDBPool();
+  const pool = await getVercelDBPool();
   const sql = sqlstring.format(`
     select business_owner, business_name, id from businesses
     where id= ?
@@ -33,7 +33,7 @@ export const addShelterToVercelDb = async (id: string) => {
 }
 
 export const getShelterAddressFromVercelDb = async (id: string) => {
-    const pool = await getNeonDBPool();
+    const pool = await getVercelDBPool();
     const sql = sqlstring.format(`
       select address, address_city, address_state, address_code, country, coordinates from business_address
       where business_id= ?
@@ -43,7 +43,7 @@ export const getShelterAddressFromVercelDb = async (id: string) => {
 }
 
 export const addShelterAddressToVercelDb = async (id: string) => {
-  const pool = await getNeonDBPool();
+  const pool = await getVercelDBPool();
   const sql = sqlstring.format(`
     select address, address_city, address_state, address_code, country, coordinates from business_address
     where business_id= ?
@@ -53,7 +53,7 @@ export const addShelterAddressToVercelDb = async (id: string) => {
 }
 
 export const getShelterOccupantsFromVercelDb = async (business_owner: string, business_name: string, is_active: boolean, business_id: string) => {
-    const pool = await getNeonDBPool();
+    const pool = await getVercelDBPool();
     const sql = sqlstring.format(`
       insert into businesses (id, business_name, business_owner, is_active, business_id, created_at)
       values (GEN_RANDOM_UUID(), ?, ?, ?, ?, NOW());
@@ -68,7 +68,7 @@ export const getShelterOccupantsFromVercelDb = async (business_owner: string, bu
 }
 
 export const addShelteeToVercelDb = async (business_owner: string, business_name: string, is_active: boolean, business_id: string) => {
-  const pool = await getNeonDBPool();
+  const pool = await getVercelDBPool();
   const sql = sqlstring.format(`
     insert into businesses (id, business_name, business_owner, is_active, business_id, created_at)
     values (GEN_RANDOM_UUID(), ?, ?, ?, ?, NOW());
