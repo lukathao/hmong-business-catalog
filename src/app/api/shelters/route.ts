@@ -1,10 +1,11 @@
 import { NextRequest } from "next/server";
 import { add_business_schema, getBody } from "@/utils/routeHelper";
 import { addNewBusinessToNeonDb, getAllBusinessesFromNeonDb } from "@/repository/NeonDbRepo";
+import { getAllSheltersFromVercelDb } from "@/repository/VercelDbRepo";
 
 export async function GET() {
     
-    const businesses = await getAllBusinessesFromNeonDb();
+    const businesses = await getAllSheltersFromVercelDb();
     return new Response(
         JSON.stringify(
             {businesses}
