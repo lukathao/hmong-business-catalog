@@ -52,7 +52,7 @@ export const addShelterAddressToVercelDb = async (id: string) => {
   return rows[0];
 }
 
-export const getShelteesFromVercelDb = async (business_owner: string, business_name: string, is_active: boolean, business_id: string) => {
+export const getShelterOccupantsFromVercelDb = async (business_owner: string, business_name: string, is_active: boolean, business_id: string) => {
     const pool = await getNeonDBPool();
     const sql = sqlstring.format(`
       insert into businesses (id, business_name, business_owner, is_active, business_id, created_at)

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getBusinesses } from '../services/businesses_service';
+import { getBusinesses } from '../../utils/services/businesses_service';
 
 
 const businesses = async () => {
@@ -13,16 +13,17 @@ const businesses = async () => {
           businesses.map((business) =>(
             <>
               <Link href={`/businesses/${business.id}`} className="border-2 rounded-md p-2">
-                <p>{business.business_name}</p>
+                <div key={business.id}>{business.business_name}</div>
               </Link>
             </>
           ))
         }
       </div>
-      <div className="flex justify-center items-center h-screen">
-        <Link className="flex-1 text-center bg-yellow-300 text-slate-50 p-2 rounded-md m-5" href="/">Home</Link>
-        <Link className="flex-1 text-center bg-yellow-300 text-slate-50 p-2 rounded-md m-5" href="/businesses/add">Add</Link>
-      </div>
+      {/* <div className="flex justify-center items-center h-screen">
+        <button className="btn btn-primary m-5">
+          <Link href="/businesses/add">Add</Link>
+        </button>
+      </div> */}
     </>
   )
 }
