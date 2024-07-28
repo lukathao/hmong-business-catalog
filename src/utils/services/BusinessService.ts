@@ -1,9 +1,9 @@
 "use server";
 
-import { getAllBusinessesFromNeonDb } from "@/repository/NeonDbRepo";
+import { getAllBusinessesFromVercelDb } from "@/repository/VercelDbRepo";
 
 
 export async function getBusinesses() {
-    return await getAllBusinessesFromNeonDb();
+    return await getAllBusinessesFromVercelDb();
 }
 

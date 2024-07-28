@@ -1,8 +1,8 @@
-import { getNeonDBPool } from '@/utils/services/NeonDbService';
+import { getVercelDBPool } from "@/utils/services/VercelDbService";
 import sqlstring from "sqlstring";
 
-export const getAllBusinessesFromNeonDb = async () => {
-    const pool = await getNeonDBPool();
+export const getAllBusinessesFromVercelDb = async () => {
+    const pool = await getVercelDBPool();
     const sql = sqlstring.format(`
       select business_owner, business_name, id from businesses  
     `, []);
