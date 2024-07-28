@@ -3,7 +3,7 @@ import React from 'react'
 const Gardens = () => {
   return (
     <>
-      <div className="pt-5 pl-7 ">
+      <div className="pt-5 pl-7">
         <div>
           <h1 className="text-5xl font-bold">Community Gardens</h1>
         </div>
