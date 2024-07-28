@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import { getBusinesses } from '../../utils/services/businesses_service';
+import { getBusinesses } from '../../utils/services/BusinessService';
 
 
 const businesses = async () => {

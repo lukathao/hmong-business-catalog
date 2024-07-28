@@ -1,4 +1,4 @@
-import { getNeonDBPool } from '@/utils/helpers/NeonDbHelper';
+import { getNeonDBPool } from '@/utils/services/NeonDbService';
 import { waitUntil } from '@vercel/functions';
 import sqlstring from "sqlstring";
 
