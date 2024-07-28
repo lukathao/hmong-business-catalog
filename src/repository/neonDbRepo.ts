@@ -1,10 +1,8 @@
-import { Pool } from '@neondatabase/serverless';
+import { getNeonDBPool } from '@/utils/services/NeonDbService';
 import sqlstring from "sqlstring";
 
 export const getAllBusinessesFromNeonDb = async () => {
-    const pool = await new Pool({
-      connectionString: process.env.NEON_DATABASE_URL,
-    });
+    const pool = await getNeonDBPool();
     const sql = sqlstring.format(`
       select business_owner, business_name, id from businesses  
     `, []);

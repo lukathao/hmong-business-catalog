@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import sqlstring from "sqlstring";
 
 export async function getBody(req: NextRequest | NextResponse) {
     if (!req.body) {
@@ -30,19 +29,3 @@ export const add_business_schema = z.object({
     business_id: z.string().max(100).min(1),
 });
 
-export const add_business_address_schema = z.object({
-    business_id: z.string().max(100).min(1),
-    address: z.string().max(100).min(1),
-    address_city: z.string().max(100).min(1),
-    address_state: z.string().max(100).min(1),
-    address_code: z.string().max(100).min(1),
-    coordinates: z.string().max(100).min(1),
-    country: z.string().max(100).min(1),
-});
-
-export async function buildGetBusinessSql() {
-    const sql = sqlstring.format(`
-        select * from businesses  
-      `, []);
-      
-}

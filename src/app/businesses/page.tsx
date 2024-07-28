@@ -1,3 +1,5 @@
+"use server";
+
 import { getBusinesses } from '../../utils/services/BusinessService';
 
 
