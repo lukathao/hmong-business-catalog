@@ -19,9 +19,7 @@ const businesses = async () => {
           {
             businesses.map((business) =>(
               <>
-                <Link href={`/businesses/${business.id}`} className="border-2 rounded-md p-2">
-                  <div key={business.id}>{business.business_name}</div>
-                </Link>
+                <div key={business.id}>{business.business_name}</div>
               </>
             ))
           }
